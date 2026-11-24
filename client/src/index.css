@@ -1,0 +1,16 @@
+/* App-specific visual styling is in App.css. */
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+}

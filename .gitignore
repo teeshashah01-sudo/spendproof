@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+**/node_modules/
+**/dist/
+**/build/
+**/.gradle/
+**/local.properties
+**/*.log
+
+# Local secrets and private runtime data
+.env
+.env.*
+!.env.example
+**/uploads/
+**/*.jks
+**/*.keystore
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated Prisma assistant skill packs
+server/.agents/
+server/.claude/
+server/.cursor/
+server/.devin/
+server/.windsurf/
+server/.codex/

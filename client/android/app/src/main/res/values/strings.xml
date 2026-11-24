@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SpendProof</string>
+    <string name="title_activity_main">SpendProof</string>
+    <string name="package_name">com.teesh.spendproof</string>
+    <string name="custom_url_scheme">com.teesh.spendproof</string>
+</resources>
+

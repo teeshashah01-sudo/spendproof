@@ -1,0 +1,49 @@
+// use prisma-8
+
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  username     String?
+  name         String?
+  passwordHash String?
+  role         String     @default("submitter")
+  posts        Post[]
+  expenses     Expense[]
+  createdAt    DateTime   @default(now()) @onCreate(now())
+  updatedAt    temporal.UpdatedAt
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime @default(now()) @onCreate(now())
+  updatedAt temporal.UpdatedAt
+}
+
+model Expense {
+  id          String        @id @onCreate(cuid(2))
+  merchant    String
+  amount      Float
+  category    String
+  purpose     String
+  status      String        @default("Submitted")
+  receiptUrl  String?
+  userId      Int?
+  createdAt   DateTime      @default(now())
+  user        User?         @relation(fields: [userId], references: [id])
+  auditEvents AuditEvent[]
+}
+
+model AuditEvent {
+  id        String   @id @onCreate(cuid(2))
+  expenseId String
+  action    String
+  createdAt DateTime @default(now())
+
+  expense Expense @relation(fields: [expenseId], references: [id])
+
+  @@index([expenseId])
+}
